@@ -1,0 +1,27 @@
+<<<for app developer>>>
+Clone the project (branch development aplikasi) 
+git clone -b development https://gitlab.del.ac.id/carimakan/sisud.git
+Create local branch.. git branch feature_x
+Checkout local branch.. git checkout feature_x
+init yii application
+Happy coding, branch and commit something
+
+Note: Setelah clone, ini username dan email git
+contoh:
+
+git config --global user.name "Marojahan Sigiro"
+git config --global user.email "marojahan@del.ac.id"
+
+
+<<<Commit Something>>>
+
+git status => untuk memastikan branch dan file yg termodifikasi dan file baru
+
+git add -A => untuk memasukkan semua file termodifikasi dan file baru ke staging
+
+git commit –m "[komentar]"  => untuk memasukkan semua file termodifikasi dan file baru ke repo lokal
+
+git pull origin development => sebelum melakukan push, kita pull terlebih dahulu latest update dari remote repo
+
+git push origin [feature-x branch] => lakukan push dari repo lokal ke remote repo
+   
