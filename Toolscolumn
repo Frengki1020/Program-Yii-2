@@ -1,0 +1,34 @@
+use common\components\ToolsColumn;
+...
+
+<?php
+    Pjax::begin();
+    echo GridView::widget([
+        'dataProvider' => $dataProvider,
+        'showFooter' => true,
+        'tableOptions' => ['class' => 'table table-stripped table-condensed table-bordered'],
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            ...
+            ['class' => 'common\components\ToolsColumn',
+                'template' => '{view} {legitimate}',
+                'buttons' => [
+                    'legitimate' => function ($url, $model){
+                        if($model->status_program_id != 5){
+                            return "<li>".Html::a('<span class="fa fa-gavel"></span> Legitimate', $url, [
+                                'title' => Yii::t('yii', 'Legitimate'),
+                                'data-confirm' => Yii::t('yii', 'Are you sure to legitimate the program ?'),
+                                'data-method' => 'post',
+                                 'data-pjax' => '0',
+                            ])."</li>";
+                        }
+                    },
+                ],
+                'urlCreator' => function ($action, $model, $key, $index){
+                    if ($action === 'view') {
+                        return Url::toRoute(['program-kompilasi-view', 'id' => $key]);
+                    } if ($action === 'legitimate') {
+                        return Url::toRoute(['program-legitimate', 'id' => $key]);
+                    }
+                }
+            ],
