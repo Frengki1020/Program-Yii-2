@@ -1,0 +1,36 @@
+Gii
+
+Systemx-core menggunakan custom template untuk gii (code generator).
+Template custom ini secara otomatis menambahkan 
+
+
+Behaviour privilege controll untuk semua controller yang digenerate
+Behaviour timestamp dan blameable untuk model yang digenerate
+
+
+Untuk mengaktifkan fitur tersebut maka tambahkan konfigurasi applikasi anda (main-local.php) dengan konfigurasi berikut:
+
+//...
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class'         => 'yii\gii\Module',
+        'generators'    => [
+                'controller' => [
+                    'class'     => 'yii\gii\generators\controller\Generator',
+                    'templates' => ['sysx-core-controller' => '@common/gii/templates/controller'],
+                    'template' => 'sysx-core-controller'
+                ],
+                'model' => [
+                    'class'     => 'yii\gii\generators\model\Generator',
+                    'templates' => ['sysx-core-model' => '@common/gii/templates/model'],
+                    'template' => 'sysx-core-model'
+                ],
+                'crud' => [
+                    'class'     => 'yii\gii\generators\crud\Generator',
+                    'templates' => ['sysx-core-model' => '@common/gii/templates/crud'],
+                    'template' => 'sysx-core-model'
+                ]
+
+            ]
+        ];
+//...
