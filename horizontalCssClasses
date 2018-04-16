@@ -1,0 +1,30 @@
+use yii\bootstrap\ActiveForm;
+...
+
+ <?php $form = ActiveForm::begin([
+                                    'options' => ['enctype' => 'multipart/form-data'],
+                                    'layout' => 'horizontal',
+                                    'method' => 'post',
+                                    'fieldConfig' => [
+                                        'horizontalCssClasses' => [
+                                            'label' => 'col-md-3',
+                                            'offset' => 'col-md-offset-10',
+                                            'wrapper' => 'col-md-0',
+                                            'error' => '',
+                                            'hint' => '',
+                                        ],
+                                    ]
+                                ]); ?>
+
+    <?= $form->field($model, 'tahun', [
+                                        'horizontalCssClasses' => ['wrapper' => 'col-sm-2',]])->textInput(['disabled' => $model->isNewRecord ? false:true]) ?>
+
+    <?= $form->field($model, 'desc', [
+                                        'horizontalCssClasses' => ['wrapper' => 'col-sm-6',]])->textArea(['rows' => 4]) ?>
+
+    <div class="form-group">
+        <div class="col-md-1 col-md-offset-3">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div></div>
+
+    <?php ActiveForm::end(); ?>
