@@ -1,0 +1,3 @@
+Soft Delete, ubah $this->findModel($id)->delete(); menjadi $this->findModel($id)->softDelete(); pada setial controllerDelete
+
+Sehingga setiap find harus ditambahkan where('deleted!=1') dan tambahkan ini di semua Models Search ->andFilterWhere(['not', ['deleted' => 1]]);
